@@ -1,17 +1,19 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { HomeComponent, LoginComponent, RegisterComponent } from './components';
+import { HomeComponent, LoginComponent, RegisterComponent, NotfoundComponent, Send404Component } from './components';
 import { AuthGuard } from './guards';
 
 
 const routes: Routes = [
-  { path: '', component: HomeComponent, canActivate: [AuthGuard] },
+  { path: '', component: HomeComponent },
     { path: 'login', component: LoginComponent },
     { path: 'register', component: RegisterComponent },
+    { path: '404', component: NotfoundComponent},
+    { path: '**', component: Send404Component },
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes,{enableTracing: true})],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
