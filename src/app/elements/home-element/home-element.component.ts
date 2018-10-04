@@ -10,13 +10,13 @@ import { SafeHtml, DomSanitizer } from '@angular/platform-browser';
 export class HomeElementComponent {
 
   @Input() html: SafeHtml;
-  @Input() content: string;
+  @Input() content = '<wv-navbar></wv-navbar>';
   @Input() data: any;
   constructor(
     public sanitizer: DomSanitizer
     ) {
-      this.html = this.sanitizer.bypassSecurityTrustHtml('<wv-navbar></wv-navbar>');
-      console.log(this.content);
+      this.html = this.sanitizer.bypassSecurityTrustHtml(this.content);
+      console.log(this.html);
     }
 
 }
