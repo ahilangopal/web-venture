@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthenticationService, AlertService } from '../../services';
 import { first } from 'rxjs/operators';
+import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
 
 @Component({
   templateUrl: './login.component.html',
@@ -19,7 +20,9 @@ export class LoginComponent implements OnInit {
       private route: ActivatedRoute,
       private router: Router,
       private authenticationService: AuthenticationService,
-      private alertService: AlertService) {}
+      private alertService: AlertService,
+      private spinnerService: Ng4LoadingSpinnerService
+      ) {}
 
   ngOnInit() {
       this.loginForm = this.formBuilder.group({
@@ -39,6 +42,7 @@ export class LoginComponent implements OnInit {
 
   onSubmit() {
       this.submitted = true;
+      this.spinnerService.show();
 
       // stop here if form is invalid
       if (this.loginForm.invalid) {
@@ -51,10 +55,12 @@ export class LoginComponent implements OnInit {
           .subscribe(
               data => {
                   this.router.navigate([this.returnUrl]);
-              },
+                  this.spinnerService.hide();
+                },
               error => {
                   this.alertService.error(error);
                   this.loading = false;
+                  this.spinnerService.hide();
               });
   }
 }

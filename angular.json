@@ -46,10 +46,13 @@
               "src/assets"
             ],
             "styles": [
-              "node_modules/bootstrap/dist/css/bootstrap.min.css",
-              "src/styles.scss"
+              "src/styles.scss",
+              "./node_modules/bootstrap/dist/css/bootstrap.min.css"
             ],
             "scripts": [
+              "./node_modules/jquery/dist/jquery.slim.min.js",
+              "./node_modules/popper.js/dist/popper.min.js",
+              "./node_modules/bootstrap/dist/js/bootstrap.min.js",
               {
                 "input": "node_modules/document-register-element/build/document-register-element.js"
               },

@@ -2,7 +2,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { Ng4LoadingSpinnerModule } from 'ng4-loading-spinner';
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -14,13 +16,15 @@ import {
   RegisterComponent,
   NotfoundComponent,
   Send404Component,
-  FooterComponent } from './components';
+  FooterComponent,
+  AdminComponent} from './components';
 import { AuthGuard } from './guards';
 import { AlertService, AuthenticationService, UserService } from './services';
 import { JwtInterceptor, ErrorInterceptor } from './helpers';
 import { AlertComponent } from './directives';
 import { HomeElementComponent } from './elements';
 import { SafePipe } from './pipes';
+import { MaterialModule } from './modules';
 
 
 @NgModule({
@@ -35,7 +39,8 @@ import { SafePipe } from './pipes';
     NotfoundComponent,
     HomeElementComponent,
     SafePipe,
-    FooterComponent
+    FooterComponent,
+    AdminComponent
   ],
   imports: [
     BrowserModule,
@@ -43,7 +48,10 @@ import { SafePipe } from './pipes';
     ReactiveFormsModule,
     FormsModule,
     HttpClientModule,
-    NgbModule
+    NgbModule,
+    BrowserAnimationsModule,
+    MaterialModule,
+    Ng4LoadingSpinnerModule.forRoot()
   ],
   providers: [
     AuthGuard,

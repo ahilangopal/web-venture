@@ -5,6 +5,8 @@ export * from './navbar/navbar.component';
 export * from './notfound/notfound.component';
 export * from './send-404/send-404.component';
 export * from './footer/footer.component';
+export * from './admin/admin.component';
+
 
 
 
